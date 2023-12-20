@@ -10,11 +10,11 @@ import Compatibility from "../widgets/Compatibility";
 import PriceTag from "../widgets/PriceTag";
 import { useNavigate } from "react-router-dom";
 
-interface BigCarouselProps {
+interface RandomGamesCarouselProps {
   games: Array<Game>;
 }
 
-const BigCarousel: FunctionComponent<BigCarouselProps> = ({ games }) => {
+const RandomGamesCarousel: FunctionComponent<RandomGamesCarouselProps> = ({ games }) => {
   const { mode, toggleColorMode } = useThemeContext();
   const designTokens = getDesignTokens(mode as PaletteMode);
   let navigate = useNavigate();
@@ -83,4 +83,4 @@ const BigCarousel: FunctionComponent<BigCarouselProps> = ({ games }) => {
   );
 };
 
-export default BigCarousel;
+export default RandomGamesCarousel;

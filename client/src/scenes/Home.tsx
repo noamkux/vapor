@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { FunctionComponent, useEffect, useState } from "react";
-import BigCarousel from "../components/BigCarousel";
+import RandomGamesCarousel from "../components/RandomGamesCarousel";
 import FeaturedGame from "../components/FeaturedGame";
 import Game from "../interfaces/Game";
 import { getGamesByPage } from "../services/gamesService";
@@ -13,14 +13,14 @@ import GenresButtons from "../components/GenresButtons";
 interface HomeProps {}
 
 const Home: FunctionComponent<HomeProps> = () => {
-  const [bigCarouselGames, setBigCarouselGames] = useState<Game[]>([]);
+  const [RandomGamesCarouselGames, setRandomGamesCarouselGames] = useState<Game[]>([]);
   const [verticalCarouselGames, setVerticalCarouselGames] = useState<Game[]>(
     []
   );
 
   useEffect(() => {
     getGamesByPage(7)
-      .then((res) => setBigCarouselGames(res.data))
+      .then((res) => setRandomGamesCarouselGames(res.data))
       .catch((err) => console.log(err));
 
     getGamesByPage(4)
@@ -29,7 +29,7 @@ const Home: FunctionComponent<HomeProps> = () => {
   }, []);
   return (
     <>
-      <BigCarousel games={bigCarouselGames} />
+      <RandomGamesCarousel games={RandomGamesCarouselGames} />
       <VerticalGameCardCarousel games={verticalCarouselGames} />
       <Box mt={"20px"}>
         <FeaturedGame />
