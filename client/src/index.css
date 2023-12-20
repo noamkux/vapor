@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+@font-face {
+  font-family: 'MotivaSansBlack';
+  src: local('MotivaSansBlackRegular'), url('assets/fonts/motiva-sans-cufonfonts/MotivaSansRegular.woff.ttf') format('truetype');
+}
+
+
+
+
+
+:root {
+    --gpGradient-StoreBackground: linear-gradient(180deg, var(--gpStoreDarkGrey) 0%, var(--gpStoreDarkerGrey) 80%);
+    --gpGradient-LibraryBackground: radial-gradient(farthest-corner at 40px 40px, #3D4450 0%, #23262E 80%);
+  }
+  
+  :root {
+    --gpStoreDarkerGrey: #1B2838;
+    --gpStoreDarkGrey: #2A475E;
+  }
+  
+  .gradient-StoreBackground {
+    background: var(--gpGradient-StoreBackground) !important;
+  }
+  .gradient-LibraryBackground{
+    background: var(--gpGradient-LibraryBackground) !important;
+  }
+  
+
+  /* @import 'tailwindcss/base';
+  @import 'tailwindcss/components';
+  @import 'tailwindcss/utilities';  */
