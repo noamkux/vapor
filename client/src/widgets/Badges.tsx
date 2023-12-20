@@ -8,10 +8,9 @@ import { Typography } from "@mui/material";
 interface BadgesProps {
   items: Array<string>;
   setLength: number;
-  height: string;
 }
 
-const Badges: FunctionComponent<BadgesProps> = ({ items, setLength , height }) => {
+const   Badges: FunctionComponent<BadgesProps> = ({ items, setLength }) => {
  
 
 
@@ -25,7 +24,7 @@ const Badges: FunctionComponent<BadgesProps> = ({ items, setLength , height }) =
         flexWrap: "wrap",
         gridAutoRows: "minmax(100px, auto)",
         mb: "10px",
-        height: height ,
+        height: "100%" ,
         overflow: "hidden",
       }}
     >

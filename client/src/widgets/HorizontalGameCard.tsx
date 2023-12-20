@@ -77,11 +77,11 @@ const HorizontalGameCard: FunctionComponent<HorizontalGameCardProps> = ({
                 </Typography>
                 <Compatibility size="small" game={game} />
               </Link>
-              <Box onClick={() => console.log("clicked")}>
+              <Box 
+                  height="29px" onClick={() => console.log("clicked")}>
                 <Badges
                   items={game.type.categories}
                   setLength={3}
-                  height="29px"
                 />
               </Box>
             </Stack>

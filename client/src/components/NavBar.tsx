@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import SideBar from "../widgets/SideBar";
 import logo from "../assets/images/whiteLogo.png";
 import { TextField } from "@mui/material";
-import { useThemeContext } from "../theme/ThemeContextProvider";
+import { useNavigate } from "react-router-dom";
 
 interface NavBarProps {}
 
@@ -24,6 +24,7 @@ const NavBar: React.FunctionComponent<NavBarProps> = ({}) => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
+  const navigate = useNavigate()
   const pages = ["Products", "Pricing", "Blog"];
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -68,6 +69,7 @@ const NavBar: React.FunctionComponent<NavBarProps> = ({}) => {
           </Box>
           <Box textAlign={"center"} mt={"10px"} mr={"10px"} sx={{ display: { md: "none" } }}>
             <img
+            onClick={() => navigate("/")}
               src={logo}
               style={{
                 width: "30%",

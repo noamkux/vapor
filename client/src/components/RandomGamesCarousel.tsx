@@ -14,13 +14,15 @@ interface RandomGamesCarouselProps {
   games: Array<Game>;
 }
 
-const RandomGamesCarousel: FunctionComponent<RandomGamesCarouselProps> = ({ games }) => {
+const RandomGamesCarousel: FunctionComponent<RandomGamesCarouselProps> = ({
+  games,
+}) => {
   const { mode, toggleColorMode } = useThemeContext();
   const designTokens = getDesignTokens(mode as PaletteMode);
   let navigate = useNavigate();
 
   return (
-    <Box my={"20px"}>
+    <Box mb={"20px"}>
       <Carousel
         height={350}
         stopAutoPlayOnHover
@@ -58,15 +60,23 @@ const RandomGamesCarousel: FunctionComponent<RandomGamesCarouselProps> = ({ game
             <Typography noWrap variant="h1" ml={"10px"} mb={"5px"}>
               {game.name}
             </Typography>
-            <Box display={"flex"} flexDirection={"row"} color={""}>
+            <Box display={"flex"} flexDirection={"row"} height={"30px"}>
               <Badges
                 setLength={7}
-                height={"30px"}
-                items={game.type.categories.concat(game.type.genres, game.developer)}
+                items={game.type.categories.concat(
+                  game.type.genres,
+                  game.developer
+                )}
               />
             </Box>
-            <Grid container >
-              <Grid item xs={6} pl={"10px"} display={"flex"} alignItems={"center"}>
+            <Grid container>
+              <Grid
+                item
+                xs={6}
+                pl={"10px"}
+                display={"flex"}
+                alignItems={"center"}
+              >
                 <Compatibility game={game} size="medium" />
               </Grid>
               <Grid item xs={6} paddingTop={"10px"}>

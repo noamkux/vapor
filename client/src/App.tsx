@@ -6,20 +6,20 @@ import { getGamesByPage } from "./services/gamesService";
 import Game from "./interfaces/Game";
 import { useThemeContext } from "./theme/ThemeContextProvider";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./scenes/Home";
+import HomePage from "./scenes/HomePage";
 import GamePage from "./scenes/GamePage";
 
 function App() {
   const { theme } = useThemeContext();
 
   return (
-    <div className="App gradient-StoreBackground" style={{ height: "200rem" }}>
+    <div className="App" style={{ height: "200rem" }}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
           <NavBar />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/game/:gameId" element={<GamePage />} />
           </Routes>
         </Router>

@@ -25,7 +25,7 @@ export function updateGame(game: Game) {
   });
 }
 
-export function getGameById(id: number) {
+export function getGameById(id: string) {
   return axios.get(`${api}/${id}`);
 }
 

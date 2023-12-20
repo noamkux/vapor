@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 import { FunctionComponent, useEffect, useState } from "react";
 import RandomGamesCarousel from "../components/RandomGamesCarousel";
 import FeaturedGame from "../components/FeaturedGame";
@@ -13,7 +13,9 @@ import GenresButtons from "../components/GenresButtons";
 interface HomeProps {}
 
 const Home: FunctionComponent<HomeProps> = () => {
-  const [RandomGamesCarouselGames, setRandomGamesCarouselGames] = useState<Game[]>([]);
+  const [RandomGamesCarouselGames, setRandomGamesCarouselGames] = useState<
+    Game[]
+  >([]);
   const [verticalCarouselGames, setVerticalCarouselGames] = useState<Game[]>(
     []
   );
@@ -28,15 +30,20 @@ const Home: FunctionComponent<HomeProps> = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <>
+    <Paper
+      className="gradient-StoreBackground"
+      sx={{
+        // height: "",
+      }}
+    >
       <RandomGamesCarousel games={RandomGamesCarouselGames} />
       <VerticalGameCardCarousel games={verticalCarouselGames} />
       <Box mt={"20px"}>
         <FeaturedGame />
       </Box>
-      <GenresButtons size="medium" xs={6}/>
-      <GameBrowser/>
-    </>
+      <GenresButtons size="medium" xs={6} />
+      <GameBrowser />
+    </Paper>
   );
 };
 

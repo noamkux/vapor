@@ -1,7 +1,7 @@
 export default interface Game {
     _id: string;
     name: string;
-    release_date: string;
+    release_date: Date;
     developer: string;
     publisher: string;
     platforms: string;

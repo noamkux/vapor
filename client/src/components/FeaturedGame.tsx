@@ -113,10 +113,10 @@ const FeaturedGame: FunctionComponent<FeaturedGameProps> = () => {
           marginLeft={"auto"}
           marginRight={"auto"}
           marginTop={"10px"}
+          height="29px"
         >
           <Badges
             setLength={4}
-            height="29px"
             items={game[0]?.type.steamspy_tags}
           />
         </Box>

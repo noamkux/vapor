@@ -41,7 +41,7 @@ const GenresButtons: FunctionComponent<GenresButtonsProps> = ({ size, xs }) => {
   }, [size]);
 
   return (
-    <Box mt={"40px"} pb={"50px"}>
+    <Box pt={"40px"} pb={"50px"} bgcolor={"transparent"}>
       <Typography variant="h3" textAlign={"center"}>
         Browse By Genres
       </Typography>
