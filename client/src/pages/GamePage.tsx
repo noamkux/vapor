@@ -12,6 +12,7 @@ import {
 import GameInfo from "../components/GameInfo";
 import { getDesignTokens } from "../theme/theme";
 import { useThemeContext } from "../theme/ThemeContextProvider";
+import GameCarousel from "../components/GameCarousel";
 
 interface GamePageProps {}
 
@@ -37,16 +38,16 @@ const GamePage: FunctionComponent<GamePageProps> = () => {
       {game && (
         <Box
           sx={{background: isNonMobileScreens 
-            ? designTokens.palette.grey[900] 
+            ? designTokens.palette.primary.light
             : `url(${game?.media.background})`,
-            backgroundSize: "cover",
+            backgroundSize: "fill",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            height: "100vh",
-            // padding: "10px"
+            height: "200vh",  
           }}
         >
           <GameInfo game={game}></GameInfo>
+          <GameCarousel game={game}></GameCarousel>
         </Box>
       )}
     </>

@@ -9,7 +9,6 @@ import { get } from "http";
 import HorizontalGameCard from "../widgets/HorizontalGameCard";
 import GameBrowser from "../components/GameBrowser";
 import GenresButtons from "../components/GenresButtons";
-
 interface HomeProps {}
 
 const Home: FunctionComponent<HomeProps> = () => {
@@ -36,6 +35,7 @@ const Home: FunctionComponent<HomeProps> = () => {
         // height: "",
       }}
     >
+      <a></a>
       <RandomGamesCarousel games={RandomGamesCarouselGames} />
       <VerticalGameCardCarousel games={verticalCarouselGames} />
       <Box mt={"20px"}>

@@ -4,6 +4,7 @@ import { Box, Button, PaletteMode, Typography } from "@mui/material";
 import { getTokenDetails, getUserByid } from "../services/userService";
 import { getDesignTokens } from "../theme/theme";
 import { useThemeContext } from "../theme/ThemeContextProvider";
+import { useNavigate } from "react-router-dom";
 
 interface BuyButtonProps {
   game: Game;
@@ -12,6 +13,7 @@ interface BuyButtonProps {
 const BuyButton: FunctionComponent<BuyButtonProps> = ({ game }) => {
   let [isOwnedByUser, setIsOwnedByUser] = useState<boolean>(false);
   let tokenDecoded = getTokenDetails();
+  let navigate = useNavigate()
 
   if (isOwnedByUser) {
   }
@@ -31,27 +33,21 @@ const BuyButton: FunctionComponent<BuyButtonProps> = ({ game }) => {
   return (
     <>
       {isOwnedByUser ? (
-        <Box display={"flex"} flexDirection={"row-reverse"}
         
-        >
-          <Button variant="contained" color="success">
+          <Button variant="contained" color="success" onClick={() => navigate(`/game/${game._id}`)}>
             Play Now
           </Button>
-        </Box>
       ) : game.price === 0 ? (
         
-          <Box display={"flex"} flexDirection={"row-reverse"}
           
-          >
-            <Button variant="contained" color="success">
+            <Button variant="contained" color="success" onClick={() => navigate(`/game/${game._id}`)}>
               <Typography variant="h3" color={"black"}>
               Play For Free
               </Typography>
             </Button>
-          </Box>
         
       ) : (
-          <Button variant="contained" color="secondary" sx={{padding : "10px"}} >
+          <Button variant="contained" color="secondary" onClick={() => navigate(`/game/${game._id}`)}>
             <Typography variant="body2">
             Add To Cart
             </Typography>

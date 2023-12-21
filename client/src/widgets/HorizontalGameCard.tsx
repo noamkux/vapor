@@ -80,7 +80,7 @@ const HorizontalGameCard: FunctionComponent<HorizontalGameCardProps> = ({
               <Box 
                   height="29px" onClick={() => console.log("clicked")}>
                 <Badges
-                  items={game.type.categories}
+                  items={game.type.steamspy_tags}
                   setLength={3}
                 />
               </Box>

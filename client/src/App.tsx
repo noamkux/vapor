@@ -6,8 +6,8 @@ import { getGamesByPage } from "./services/gamesService";
 import Game from "./interfaces/Game";
 import { useThemeContext } from "./theme/ThemeContextProvider";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from "./scenes/HomePage";
-import GamePage from "./scenes/GamePage";
+import HomePage from "./pages/HomePage";
+import GamePage from "./pages/GamePage";
 
 function App() {
   const { theme } = useThemeContext();

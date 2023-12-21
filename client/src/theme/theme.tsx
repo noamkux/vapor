@@ -14,17 +14,18 @@ export const getDesignTokens = (mode: PaletteMode) => {
             secondary: {
               light: "#66C0F4",
               main: "#4B619B",
-              dark: "#212B45",
+              dark: "#1e262f",
             },
             grey: {
               900: "#0E141B", // Main
             },
             text: {
               primary: "#F3F3F3",
-                secondary: "#76808C",
+              secondary: "#76808C",
             },
             error: { main: "#CD5444" },
-            info: { main: "#C1B15F" },
+            warning: { main: "#C1B15F" },
+            info: { main :"#67C1F5" },
             sucsses: { main: "#A1CD44" },
           }
         : {
@@ -57,16 +58,14 @@ export const getDesignTokens = (mode: PaletteMode) => {
       h3: {
         fontSize: "18px",
         fontWeight: 700,
-        
       },
-      h4 : {
+      h4: {
         fontSize: "16px",
         fontWeight: 400,
       },
       subtitle1: {
         fontSize: "14px",
         fontWeight: 400,
-        
       },
       subtitle2: {
         fontSize: "12px",

@@ -20,13 +20,6 @@ const PriceTag: FunctionComponent<PriceTagProps> = ({ game }) => {
       ) : (
         <Typography
           variant="h3"
-          mr={"10px"}
-          px={"10px"}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
         >
           ${game.price}
         </Typography>

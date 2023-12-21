@@ -1,7 +1,15 @@
 import { FunctionComponent } from "react";
 import Carousel from "react-material-ui-carousel";
 import Game from "../interfaces/Game";
-import { Box, Fab, Grid, PaletteMode, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Fab,
+  Grid,
+  PaletteMode,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useThemeContext } from "../theme/ThemeContextProvider";
 import { getDesignTokens } from "../theme/theme";
 import Badges from "../widgets/Badges";
@@ -22,9 +30,10 @@ const RandomGamesCarousel: FunctionComponent<RandomGamesCarouselProps> = ({
   let navigate = useNavigate();
 
   return (
-    <Box mb={"20px"}>
+    <Box mb={"20px"} pb={"10px"} height={"375px"}>
       <Carousel
-        height={350}
+        autoPlay={false}
+        sx={{height: "100%"}}
         stopAutoPlayOnHover
         indicatorContainerProps={{ style: { display: "none" } }}
       >
@@ -33,22 +42,20 @@ const RandomGamesCarousel: FunctionComponent<RandomGamesCarouselProps> = ({
             key={i}
             sx={{
               padding: "10px",
+              paddingBottom : "20px",
               borderRadius: "0px",
+              overflow: "hidden",
+              
             }}
           >
-            <Box
-              sx={{
-                overflow: "hidden",
-                textAlign: "center",
-              }}
-            >
+            
               <img
                 src={game.media.header_image}
                 alt={game.name}
                 onClick={() => navigate(`/game/${game._id}`)}
                 style={{
                   paddingTop: "10px",
-                  width: "95%",
+                  width: "100%",
                   overflow: "hidden",
                   textAlign: "center",
                   backgroundSize: "cover",
@@ -56,7 +63,6 @@ const RandomGamesCarousel: FunctionComponent<RandomGamesCarouselProps> = ({
                   margin: "auto",
                 }}
               />
-            </Box>
             <Typography noWrap variant="h1" ml={"10px"} mb={"5px"}>
               {game.name}
             </Typography>
@@ -69,21 +75,33 @@ const RandomGamesCarousel: FunctionComponent<RandomGamesCarouselProps> = ({
                 )}
               />
             </Box>
-            <Grid container>
+            <Grid container paddingTop={"20px"}>
               <Grid
                 item
                 xs={6}
+                pt={"5px"}
                 pl={"10px"}
-                display={"flex"}
-                alignItems={"center"}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "start",
+                }}
               >
                 <Compatibility game={game} size="medium" />
               </Grid>
-              <Grid item xs={6} paddingTop={"10px"}>
-                <Box display={"flex"} flexDirection={"row-reverse"}>
-                  <BuyButton game={game} />
-                  <PriceTag game={game} />
-                </Box>
+              <Grid
+                item
+                xs={3}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <PriceTag game={game} />
+              </Grid>
+              <Grid item xs={3}>
+                <BuyButton game={game} />
               </Grid>
             </Grid>
           </Paper>

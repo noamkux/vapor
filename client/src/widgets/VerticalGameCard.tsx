@@ -34,7 +34,7 @@ const VerticalGameCard: FunctionComponent<VerticalGameCardProps> = ({
             backgroundRepeat: "no-repeat",
             backgroundImage: `url(${game.media.header_image})`,
           }}
-          onClick={() => hoverdItem === index && navigate(`/game/${game._id}`)}
+          onClick={() => hoverdItem === index}
         >
           <Box // gradient
             sx={{
