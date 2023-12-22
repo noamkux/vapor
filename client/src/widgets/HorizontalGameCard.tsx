@@ -37,6 +37,8 @@ const HorizontalGameCard: FunctionComponent<HorizontalGameCardProps> = ({
           >
             <Link
               style={{
+                height: "100%",
+                width: "100%",
                 textDecoration: "none",
                 color: "inherit",
               }}
@@ -45,9 +47,9 @@ const HorizontalGameCard: FunctionComponent<HorizontalGameCardProps> = ({
               <img
                 src={game.media.header_image}
                 alt={game.name}
-                height={"80%"}
-                width={"90%"}
-                style={{ backgroundSize: "cover", paddingLeft: "10px" }}
+                height={"100%"}
+                width={"100%"}
+                style={{ backgroundSize: "cover", padding: "10px" }}
               />
             </Link>
           </Grid>
@@ -63,7 +65,6 @@ const HorizontalGameCard: FunctionComponent<HorizontalGameCardProps> = ({
               >
                 <Typography
                   variant={"body1"}
-                  
                   style={{
                     overflow: "hidden",
                     textOverflow: "ellipsis",
@@ -77,12 +78,8 @@ const HorizontalGameCard: FunctionComponent<HorizontalGameCardProps> = ({
                 </Typography>
                 <Compatibility size="small" game={game} />
               </Link>
-              <Box 
-                  height="29px" onClick={() => console.log("clicked")}>
-                <Badges
-                  items={game.type.steamspy_tags}
-                  setLength={3}
-                />
+              <Box height="29px">
+                <Badges items={game.type.steamspy_tags} dataType={"steamspy_tags"} setLength={3} />
               </Box>
             </Stack>
           </Grid>

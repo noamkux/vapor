@@ -68,11 +68,10 @@ const RandomGamesCarousel: FunctionComponent<RandomGamesCarouselProps> = ({
             </Typography>
             <Box display={"flex"} flexDirection={"row"} height={"30px"}>
               <Badges
+                dataType={"categories"}
                 setLength={7}
-                items={game.type.categories.concat(
-                  game.type.genres,
-                  game.developer
-                )}
+                items={game.type.categories}
+                
               />
             </Box>
             <Grid container paddingTop={"20px"}>

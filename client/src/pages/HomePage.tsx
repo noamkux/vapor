@@ -9,6 +9,7 @@ import { get } from "http";
 import HorizontalGameCard from "../widgets/HorizontalGameCard";
 import GameBrowser from "../components/GameBrowser";
 import GenresButtons from "../components/GenresButtons";
+import SearchBar from "../widgets/SearchBar";
 interface HomeProps {}
 
 const Home: FunctionComponent<HomeProps> = () => {
@@ -31,11 +32,8 @@ const Home: FunctionComponent<HomeProps> = () => {
   return (
     <Paper
       className="gradient-StoreBackground"
-      sx={{
-        // height: "",
-      }}
     >
-      <a></a>
+      <SearchBar />
       <RandomGamesCarousel games={RandomGamesCarouselGames} />
       <VerticalGameCardCarousel games={verticalCarouselGames} />
       <Box mt={"20px"}>

@@ -85,8 +85,8 @@ const GameInfo: FunctionComponent<GameInfoProps> = ({ game }) => {
               <Typography>{game.description.short_description}</Typography>
             </Grid>
             <Grid item xs={12}>
-              <Badges items={game.type.steamspy_tags} setLength={5} />
-              </Grid>
+              <Badges items={game.type.steamspy_tags} dataType={"steamspy_tags"} setLength={5} />
+            </Grid>
             {/* <Badges items={game.type.steamspy_tags} setLength={5} /> */}
             <Grid item xs={12}>
               <Reviews game={game} />

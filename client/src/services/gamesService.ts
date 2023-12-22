@@ -3,7 +3,10 @@ import Game from "../interfaces/Game";
 
 let api = `${process.env.REACT_APP_API}/games`;
 
+
+
 export function getGames(params : any) {
+  
   return axios.get(api, {params: params});
 }
 

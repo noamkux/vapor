@@ -8,6 +8,7 @@ import { useThemeContext } from "./theme/ThemeContextProvider";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import GamePage from "./pages/GamePage";
+import BrowserPage from "./pages/BrowserPage";
 
 function App() {
   const { theme } = useThemeContext();
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/game/:gameId" element={<GamePage />} />
+            <Route path="/browser" element={<BrowserPage/>} />
           </Routes>
         </Router>
       </ThemeProvider>

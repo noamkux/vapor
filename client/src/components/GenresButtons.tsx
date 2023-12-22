@@ -1,5 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { FunctionComponent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getQueryParams } from "../services/queryService";
 
 interface GenresButtonsProps {
   size: "small" | "medium" | "large";
@@ -22,6 +24,10 @@ const GenresButtons: FunctionComponent<GenresButtonsProps> = ({ size, xs }) => {
     "Violent",
   ];
 
+
+
+
+  let navigate = useNavigate();
   let [genresList, setGenresList] = useState<string[]>(genres);
 
   useEffect(() => {
@@ -46,9 +52,15 @@ const GenresButtons: FunctionComponent<GenresButtonsProps> = ({ size, xs }) => {
         Browse By Genres
       </Typography>
       <Grid container spacing={2} textAlign={"center"} p={"10px"}>
-        {genresList.map((category, i) => (
+        {genresList.map((genre, i) => (
           <Grid item xs={xs} key={i}>
-            <Button variant="contained" fullWidth size="large" key={i}>
+            <Button
+              variant="contained"
+              fullWidth
+              size="large"
+              key={i}
+              onClick={() => navigate(`/browser/?genres=${genre}`)}
+            >
               <Typography
                 variant="body1"
                 style={{
@@ -57,7 +69,7 @@ const GenresButtons: FunctionComponent<GenresButtonsProps> = ({ size, xs }) => {
                   textOverflow: "ellipsis",
                 }}
               >
-                {category}
+                {genre}
               </Typography>
             </Button>
           </Grid>

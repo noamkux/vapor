@@ -21,7 +21,7 @@ mongoose
   .catch((error) => {
     console.log(`${error} Failed To Connect To MongoDB`);
   });
-
+  mongoose.set('debug', true);
 app.use("/api/users", users);
 app.use("/api/users/register", register);
 app.use("/api/games", games)

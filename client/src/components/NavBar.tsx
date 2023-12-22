@@ -127,21 +127,7 @@ const NavBar: React.FunctionComponent<NavBarProps> = ({}) => {
         </Toolbar>
       </Container>
       
-      <TextField
-        id="filled-basic"
-        label="Search..."
-        InputLabelProps={{ sx: { paddingLeft: "10px", color: "white" } }}
-        InputProps={{
-          endAdornment: (
-            <i
-              className="fa-solid fa-search"
-              style={{ color: "white", marginRight: "10px" }}
-            ></i>
-          ),
-        }}
-        variant="filled"
-        sx={{ display: { xs: "flex", md: "none" } }}
-      />
+      
     </AppBar>
   );
 };

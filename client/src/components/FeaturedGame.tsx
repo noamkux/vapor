@@ -27,7 +27,6 @@ const FeaturedGame: FunctionComponent<FeaturedGameProps> = () => {
     getGamesByPage(1)
       .then((res) => {
         setGame(res.data);
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -118,6 +117,7 @@ const FeaturedGame: FunctionComponent<FeaturedGameProps> = () => {
           <Badges
             setLength={4}
             items={game[0]?.type.steamspy_tags}
+            dataType={"steamspy_tags"}
           />
         </Box>
       </Grid>

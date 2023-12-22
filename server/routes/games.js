@@ -48,70 +48,45 @@ function isValidJson(obj) {
   return true;
 }
 
+// get my games
+
 router.get("/", async (req, res) => {
   try {
-    console.log(req.protocol + "://" + req.get("host") + req.originalUrl);
-    const page = parseInt(req.query.page) - 1 || 0;
-    const limit = parseInt(req.query.limit) || 5;
-    const search = req.query.search || "";
-    let sort = req.query.sort || "rating";
-    let genre = req.query.genre || "All";
-    let genreOptions = [
-      "Action",
-      "Adventure",
-      "Strategy",
-      "Racing",
-      "Free to Play",
-      "RPG",
-      "Indie",
-      "Casual",
-      "Massively Multiplayer",
-      "Simulation",
-      "Sports",
-      "Violent",
-    ];
-
-    genre === "All"
-      ? (genre = [...genreOptions])
-      : (genre = req.query.genre.split(","));
-    req.query.sort ? (sort = req.query.sort.split(",")) : (sort = [sort]);
-
+    let sort = req.query.sortingParams.sort || "desc";
+    let page = req.query.sortingParams.page - 1;
+    let name = "";
+    req.query.sortingParams.sort
+      ? (sort = req.query.sortingParams.sort.split(","))
+      : (sort = [sort]);
     let sortBy = {};
     if (sort[1]) {
       sortBy[sort[0]] = sort[1];
     } else {
       sortBy[sort[0]] = "asc";
     }
-    const games = await Game.find({
-      name: { $regex: search, $options: "i" },
-    })
-      .where("type.genres")
-      .in([...genre])
-      .sort(sortBy)
-      .skip(page * limit)
-      .limit(limit);
 
-    const total = await Game.countDocuments({
-      "type.genres": { $in: [...genre] },
-      name: { $regex: search, $options: "i" },
-    });
+    let searchParams = req.query.searchParams;
+    if (searchParams && searchParams.name) {
+      searchParams.name = new RegExp(searchParams.name, 'i');
+    }
+    const total = await Game.countDocuments(req.query.searchParams);
+    const games = await Game.find(req.query.searchParams)
+      .sort(sortBy)
+      .skip(page * req.query.sortingParams.limit)
+      .limit(req.query.sortingParams.limit);
+
 
     const response = {
       error: false,
       total,
-      page: page + 1,
-      limit,
-      genres: genreOptions,
+      page: req.query.sortingParams.page,
+      limit: req.query.sortingParams.limit,
       games,
     };
-    res.status(200).json(response);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: true, message: "Internal Server Error" });
-  }
+    return res.status(200).send(response);
+  } catch (error) {}
 });
 
-// get my games
 router.get("/mygames", auth, async (req, res) => {
   try {
     let user = await User.findById(req.payload._id);

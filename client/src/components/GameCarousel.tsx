@@ -106,7 +106,6 @@ const GameCarousel: FunctionComponent<GameCarouselProps> = ({ game }) => {
                   alt={game.name}
                   style={{
                     width: "100%",
-
                     height: "25vh",
                     maxHeight: "25vh",
                     maxWidth: "100%",

@@ -3,18 +3,19 @@ import Box from "@mui/material/Box";
 import { FunctionComponent, useEffect } from "react";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import { Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 
 interface BadgesProps {
   items: Array<string>;
   setLength: number;
+  dataType: string;
 }
 
-const   Badges: FunctionComponent<BadgesProps> = ({ items, setLength }) => {
+const   Badges: FunctionComponent<BadgesProps> = ({ items, setLength , dataType}) => {
  
 
-
-
+  let navigate = useNavigate();
   return (
     
     <Box
@@ -32,7 +33,7 @@ const   Badges: FunctionComponent<BadgesProps> = ({ items, setLength }) => {
         (badge, i) =>
           i < setLength && (
             <Button
-            onClick={() => console.log("clicked")}
+            onClick={() => navigate(`/browser?${dataType}=${badge}`)}
               key={i}
               variant="contained"
               sx={{
