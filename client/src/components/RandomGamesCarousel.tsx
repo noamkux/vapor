@@ -90,6 +90,7 @@ const RandomGamesCarousel: FunctionComponent<RandomGamesCarouselProps> = ({
               </Grid>
               <Grid
                 item
+                height={"52px"}
                 xs={3}
                 sx={{
                   display: "flex",
@@ -99,7 +100,11 @@ const RandomGamesCarousel: FunctionComponent<RandomGamesCarouselProps> = ({
               >
                 <PriceTag game={game} />
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={3} sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}>
                 <BuyButton game={game} />
               </Grid>
             </Grid>

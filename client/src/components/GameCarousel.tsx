@@ -53,10 +53,9 @@ const GameCarousel: FunctionComponent<GameCarouselProps> = ({ game }) => {
   return (
     <>
       {screenshots && (
-        <Box p={"15px"} style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}>
+        <Box px={"15px"} py={"40px"} style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}>
           <Carousel
             sx={{ overflow: "visible" }}
-            autoPlay={false}
             navButtonsAlwaysInvisible={true}
             indicatorIconButtonProps={{
               style: {

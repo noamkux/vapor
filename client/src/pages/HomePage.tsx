@@ -40,7 +40,7 @@ const Home: FunctionComponent<HomeProps> = () => {
         <FeaturedGame />
       </Box>
       <GenresButtons size="medium" xs={6} />
-      <GameBrowser />
+      <GameBrowser displaySearchBar />
     </Paper>
   );
 };

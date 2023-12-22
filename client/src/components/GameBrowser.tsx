@@ -7,9 +7,15 @@ import PageCounter from "../widgets/PageCounter";
 import { useLocation } from "react-router-dom";
 import SearchBar from "../widgets/SearchBar";
 
-interface GameBrowserProps {}
+interface GameBrowserProps {
+  displaySearchBar?: boolean;
+  initialParams?: any;
+}
 
-const GameBrowser: FunctionComponent<GameBrowserProps> = () => {
+const GameBrowser: FunctionComponent<GameBrowserProps> = ({
+  displaySearchBar,
+  initialParams,
+}) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
 
@@ -22,37 +28,56 @@ const GameBrowser: FunctionComponent<GameBrowserProps> = () => {
   let [sort, setSort] = useState<string>(
     queryParams.get("sort") || "release_date,desc"
   );
-  let [params, setParams] = useState<any>({
-    sortingParams: {
-      page: page,
-      limit: limit,
-      sort: sort,
-    },
-    searchParams: {
-      name: queryParams.get("search") || "",
-      "type.genres": queryParams.get("genres") || "",
-      "type.categories": queryParams.get("categories") || "",
-      "type.steamspy_tags": queryParams.get("steamspy_tags") || "",
-      price: queryParams.get("price") || "",
-    },
-  });
   let [total, setTotal] = useState<number>(0);
   let [games, setGames] = useState<Game[]>([]);
 
-  useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    setParams({
-      sortingParams: {
+  let [params, setParams] = useState<any>({
+    sortingParams: {
+      ...{
         page: page,
         limit: limit,
         sort: sort,
       },
-      searchParams: {
+      ...(initialParams?.sortingParams || {}),
+    },
+    searchParams: {
+      ...{
         name: queryParams.get("search") || "",
         "type.genres": queryParams.get("genres") || "",
         "type.categories": queryParams.get("categories") || "",
         "type.steamspy_tags": queryParams.get("steamspy_tags") || "",
         price: queryParams.get("price") || "",
+        developer: queryParams.get("developer") || "",
+        publisher: queryParams.get("publisher") || "",
+        platforms: queryParams.get("platforms") || "",
+      },
+      ...(initialParams?.searchParams || {}),
+    },
+  });
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    setParams({
+      sortingParams: {
+        ...{
+          page: page,
+          limit: limit,
+          sort: sort,
+        },
+        ...(initialParams?.sortingParams || {}),
+      },
+      searchParams: {
+        ...{
+          name: queryParams.get("search") || "",
+          "type.genres": queryParams.get("genres") || "",
+          "type.categories": queryParams.get("categories") || "",
+          "type.steamspy_tags": queryParams.get("steamspy_tags") || "",
+          price: queryParams.get("price") || "",
+          developer: queryParams.get("developer") || "",
+          publisher: queryParams.get("publisher") || "",
+          platforms: queryParams.get("platforms") || "",
+        },
+        ...(initialParams?.searchParams || {}),
       },
     });
   }, [location.search, page, sort]);
@@ -69,9 +94,10 @@ const GameBrowser: FunctionComponent<GameBrowserProps> = () => {
       .catch((err) => console.log(err));
   }, [params]);
 
+
   return (
     <>
-      <SearchBar />
+      {displaySearchBar && <SearchBar />}
       <Filter userfilter={sort} setFilter={setSort} />
       {games &&
         games.map((game) => <HorizontalGameCard game={game} key={game._id} />)}

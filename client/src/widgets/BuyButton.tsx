@@ -42,9 +42,9 @@ const BuyButton: FunctionComponent<BuyButtonProps> = ({ game }) => {
       ) : game.price === 0 ? (
         
           
-            <Button variant="contained" color="success" onClick={() => navigate(`/game/${game._id}`)}>
+            <Button fullWidth sx={{height : "100%"}} variant="contained" color="success" onClick={() => navigate(`/game/${game._id}`)}>
               <Typography variant="h3" color={"black"}>
-              Play For Free
+              Free
               </Typography>
             </Button>
         

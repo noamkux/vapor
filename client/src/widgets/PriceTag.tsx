@@ -11,11 +11,12 @@ const PriceTag: FunctionComponent<PriceTagProps> = ({ game }) => {
     <>
       {game.price === 0 ? (
         <Box>
-          {/* <Button sx={{width : "50px"}} variant="contained" color="success" size="small"> */}
-            <Typography variant="h3" whiteSpace={"nowrap"} mr={"45px"}>
-              Play For Free
-            </Typography>
-          {/* </Button> */}
+          
+        <Typography
+          variant="h3"
+        >
+          Free To Play
+        </Typography>
         </Box>
       ) : (
         <Typography

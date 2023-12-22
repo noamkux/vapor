@@ -12,7 +12,7 @@ const SearchBar: FunctionComponent<SearchBarProps> = () => {
   const handleSearch = () => {
     const queryParams = new URLSearchParams(location.search);
     queryParams.set("search", searchValue);
-    navigate({ search: queryParams.toString() });
+    navigate({ pathname: '/browser', search: queryParams.toString() });
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {

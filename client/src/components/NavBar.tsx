@@ -43,7 +43,7 @@ const NavBar: React.FunctionComponent<NavBarProps> = ({}) => {
   };
 
   return (
-    <AppBar position="static" className="gradient-LibraryBackground">
+    <AppBar position="static" sx={{bgcolor : "grey.900"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ height: "70px" }}>
           <Typography

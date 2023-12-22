@@ -13,6 +13,7 @@ import GameInfo from "../components/GameInfo";
 import { getDesignTokens } from "../theme/theme";
 import { useThemeContext } from "../theme/ThemeContextProvider";
 import GameCarousel from "../components/GameCarousel";
+import GameBrowser from "../components/GameBrowser";
 
 interface GamePageProps {}
 
@@ -48,6 +49,8 @@ const GamePage: FunctionComponent<GamePageProps> = () => {
         >
           <GameInfo game={game}></GameInfo>
           <GameCarousel game={game}></GameCarousel>
+          <Box height={"50px"}></Box>
+          <GameBrowser initialParams={{searchParams: {"type.steamspy_tags" : game.type.steamspy_tags[0]}}}/>
         </Box>
       )}
     </>

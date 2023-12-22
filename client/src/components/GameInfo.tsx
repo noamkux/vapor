@@ -14,6 +14,7 @@ import Badges from "../widgets/Badges";
 import { getDesignTokens } from "../theme/theme";
 import { useThemeContext } from "../theme/ThemeContextProvider";
 import Reviews from "../widgets/Reviews";
+import { useNavigate } from "react-router-dom";
 
 interface GameInfoProps {
   game: Game;
@@ -22,6 +23,7 @@ interface GameInfoProps {
 const GameInfo: FunctionComponent<GameInfoProps> = ({ game }) => {
   const { mode, toggleColorMode } = useThemeContext();
   const designTokens = getDesignTokens(mode as PaletteMode);
+  let navigate = useNavigate();
   return (
     <>
       <Paper
@@ -48,6 +50,7 @@ const GameInfo: FunctionComponent<GameInfoProps> = ({ game }) => {
                 </Typography>
                 <Typography
                   variant="body1"
+                  onClick={() => navigate(`/browser/?developer=${game.developer}`)}
                   sx={{
                     color: designTokens.palette.info.main,
                   }}
@@ -62,6 +65,7 @@ const GameInfo: FunctionComponent<GameInfoProps> = ({ game }) => {
                   Publisher
                 </Typography>
                 <Typography
+                
                   variant="body1"
                   sx={{
                     color: designTokens.palette.info.main,
@@ -87,7 +91,6 @@ const GameInfo: FunctionComponent<GameInfoProps> = ({ game }) => {
             <Grid item xs={12}>
               <Badges items={game.type.steamspy_tags} dataType={"steamspy_tags"} setLength={5} />
             </Grid>
-            {/* <Badges items={game.type.steamspy_tags} setLength={5} /> */}
             <Grid item xs={12}>
               <Reviews game={game} />
             </Grid>

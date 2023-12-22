@@ -52,6 +52,8 @@ function isValidJson(obj) {
 
 router.get("/", async (req, res) => {
   try {
+    
+    console.log(req.query.searchParams);
     let sort = req.query.sortingParams.sort || "desc";
     let page = req.query.sortingParams.page - 1;
     let name = "";

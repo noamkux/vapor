@@ -19,7 +19,7 @@ const BrowserPage: FunctionComponent<BrowserPageProps> = () => {
           height: "100vh",
         }}
       >
-        <GameBrowser />
+        <GameBrowser displaySearchBar />
       </Paper>
     </>
   );
